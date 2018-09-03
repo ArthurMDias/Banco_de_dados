@@ -1,0 +1,54 @@
+select * from cavalo;
+select * from criador;
+select * from pais;
+select * from raca;
+select * from disputa;
+select * from prova;
+
+
+
+select nomecavalo from cavalo  					--listar nomes ordenadamente
+	order by nomecavalo;
+ 
+select count(*) from cavalo		
+	where codcriador=3
+    and valor>100000;
+    
+select avg(valor) from cavalo                   --média do valor dos cavalos que pertencem ao criador 3
+	where codcriador=3;
+    
+select nomecavalo,nomecriador,nomeraca from cavalo,criador,raca       --QUESTÃO F
+	where cavalo.codcriador=criador.codcriador
+    and cavalo.codraca=raca.codraca;
+    
+select nomecavalo,nomecriador,nomeraca from cavalo,criador,raca       
+	where cavalo.codcriador=criador.codcriador
+    and cavalo.codraca=raca.codraca
+    ORDER BY NOMEraca,nomecriador,nomecavalo;
+    
+select nomecavalo,nomprova from cavalo,prova,disputa    --provas em que os cavalos correram
+	where cavalo.codcavalo=disputa.codcavalo
+    and  disputa.codprova=prova.codprova;
+    
+    select distinct nomecavalo,nomprova from cavalo,prova,disputa 
+	where cavalo.codcavalo=disputa.codcavalo
+    and  disputa.codprova=prova.codprova;
+    
+    
+    
+select nomecavalo from cavalo,criador
+	where cavalo.codcriador=criador.codcriador
+    and   nomecriador='Juan';
+    
+select nomecavalo from cavalo,prova,disputa
+	where cavalo.codcavalo=disputa.codcavalo
+    and   disputa.codprova=prova.codprova
+    and nomprova='GP Bento Goncalves';
+
+select nomecavalo from cavalo,prova,disputa
+	where cavalo.codcavalo=disputa.codcavalo
+    and   disputa.codprova=prova.codprova
+    and nomprova='GP Bento Goncalves'
+    and colocacao=1;
+  
+
